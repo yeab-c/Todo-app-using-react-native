@@ -11,11 +11,11 @@ export interface ColorScheme {
     success: string;
     warning: string;
     danger: string;
-    shawdow: string;
+    shadow: string;
     gradient: {
         background: [string, string];
         surface: [string, string];
-        primmary: [string, string];
+        primary: [string, string];
         success: [string, string];
         warning: [string, string];
         danger: [string, string];
@@ -39,11 +39,11 @@ const lightColors: ColorScheme = {
     success: '#4CAF50',
     warning: '#FFC107',
     danger: '#F44336',
-    shawdow: '#00000029',
+    shadow: '#00000029',
     gradient: {
         background: ['#FFFFFF', '#F2F2F2'],
         surface: ['#F2F2F2', '#E6E6E6'],
-        primmary: ['#FF4081', '#E91E63'],
+        primary: ['#FF4081', '#E91E63'],
         success: ['#66BB6A', '#4CAF50'],
         warning: ['#FFA726', '#FFC107'],
         danger: ['#EF5350', '#F44336'],
@@ -67,11 +67,11 @@ const darkColors: ColorScheme = {
     success: '#4CAF50',
     warning: '#FFC107',
     danger: '#F44336',
-    shawdow: '#00000029',
+    shadow: '#00000029',
     gradient: {
         background: ['#121212', '#1E1E1E'],
         surface: ['#1E1E1E', '#333333'],
-        primmary: ['#FF4081', '#E91E63'],
+        primary: ['#FF4081', '#E91E63'],
         success: ['#66BB6A', '#4CAF50'],
         warning: ['#FFA726', '#FFC107'],
         danger: ['#EF5350', '#F44336'],

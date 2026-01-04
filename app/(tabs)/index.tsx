@@ -1,50 +1,29 @@
+import { createHomeStyles } from "@/assets/styles/home.styles";
+import Header from "@/components/Header";
 import useTheme from "@/hooks/useTheme";
-import { useMutation, useQuery } from "convex/react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { api } from "../../convex/_generated/api";
+import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
 
-  const {toggleDarkMode} = useTheme();
+  const {toggleDarkMode, colors} = useTheme();
 
-  const todos = useQuery(api.todos.getTodos);
-
-  console.log(todos);
-
-  const addTodo = useMutation(api.todos.addTodo)
-  const clearAllTodos = useMutation(api.todos.clearAllTodos);
+  const homeStyles = createHomeStyles(colors);
 
   return (
-    <View
-      style={styles.container}
+    <LinearGradient colors={colors.gradient.background} style={homeStyles.container}>
+      <StatusBar barStyle={colors.statusBarStyle} />
+      <SafeAreaView
+      style={homeStyles.safeArea}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-      <Text style={styles.content}>Whatttttt!</Text>
+      <Header />
       <TouchableOpacity onPress={toggleDarkMode}>
         <Text>Toggle Theme</Text>
       </TouchableOpacity>
-      {todos?.map(({ _id, text }) => <Text key={_id}>{text}</Text>)}
-      <TouchableOpacity onPress={() => addTodo({text:"hello"})}>
-        <Text>Add Todo</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => clearAllTodos()}>
-        <Text>clear</Text>
-      </TouchableOpacity>
-    </View>
+    </SafeAreaView>
+    </LinearGradient>
   );
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  content: {
-    fontSize:24,
-  }
-
-
-});
