@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { StatusBar } from 'react-native';
 
 export interface ColorScheme {
     background: string;
@@ -37,7 +38,7 @@ const lightColors: ColorScheme = {
     border: '#E6E6E6',
     primary: '#E91E63',
     success: '#4CAF50',
-    warning: '#FFC107',
+    warning: '#2196F3',
     danger: '#F44336',
     shadow: '#00000029',
     gradient: {
@@ -65,7 +66,7 @@ const darkColors: ColorScheme = {
     border: '#333333',
     primary: '#E91E63',
     success: '#4CAF50',
-    warning: '#FFC107',
+    warning: '#2196F3',
     danger: '#F44336',
     shadow: '#00000029',
     gradient: {
@@ -113,6 +114,11 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode, colors }}>
+            <StatusBar
+                barStyle={colors.statusBarStyle}
+                backgroundColor="transparent"
+                translucent
+            />
             {children}
         </ThemeContext.Provider>
     );
